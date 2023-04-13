@@ -1,9 +1,17 @@
 import React from 'react';
+import { IRepo } from '../../types/IRepo';
 
-export default function Repositorio(){
+
+interface repoInfo{
+    repo: IRepo
+}
+
+export default function Repositorio({repo}: repoInfo){
+
+    
     return(
         <div>
-            <label>Repositório</label>
+            <label>{repo.name}</label>
         </div>
     )
 }
