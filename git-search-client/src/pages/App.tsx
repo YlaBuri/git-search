@@ -1,4 +1,5 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import Buscar from '../components/buscar';
 import Cabecalho from '../components/cabecalho';
 import Repositorio from '../components/repositorio';
@@ -9,7 +10,7 @@ import { IUser } from '../types/IUser';
 
 function App() {
 
-  const user: IUser = {
+  /* const user: IUser = {
     login: "YlaBuri",
     id: 31744347,
     node_id: "MDQ6VXNlcjMxNzQ0MzQ3",
@@ -31,9 +32,9 @@ function App() {
     following: 3,
     created_at: "2017-09-07T19:17:10Z",
     updated_at: "2023-03-27T11:49:43Z"
-};
+}; */
 
-const repos: IRepo[] = [
+/* const repos: IRepo[] = [
   {
     id: 1,
     node_id: '12345',
@@ -133,11 +134,37 @@ const repos: IRepo[] = [
     watchers: 20,
     default_branch: 'main',
     }
-  ]
+  ] */
   
+  const [user, setUser] = useState(null);
+
+  const [repos, setRepo] = useState<IRepo[]>([]);
+
+  /* useEffect(() =>{
+    //pegar usuario
+    axios.get("https://api.github.com/users/ylaburi")
+    .then(resposta =>{
+      console.log(resposta)
+      setUser(resposta.data)
+    })
+  }, []) */
 
   const pesquisar = (inputValor: string) => {
     console.log('O valor do input é:', inputValor);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    
+      //pegar usuario
+      axios.get(`http://localhost:8080/api/user/${inputValor}`)
+      .then(resposta =>{
+        console.log(resposta)
+        setUser(resposta.data)
+      })
+
+      axios.get(`http://localhost:8080/api/user/${inputValor}/repos`)
+      .then(resposta =>{
+        console.log(resposta)
+        setRepo(resposta.data)
+      })
   }
 
   return (
@@ -145,8 +172,8 @@ const repos: IRepo[] = [
 
       <Cabecalho/>
       <Buscar onSubmit={pesquisar}/>
-      <Usuario user={user}/>
-
+      {/* <Usuario user={user}/> */}
+      {user && <Usuario user={user} />}
       {repos.map((item, index) => (
           <Repositorio key={index}
           repo={item}/>
