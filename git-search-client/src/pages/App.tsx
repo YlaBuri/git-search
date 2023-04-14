@@ -1,12 +1,11 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Buscar from '../components/buscar';
 import Cabecalho from '../components/cabecalho';
 import Repositorio from '../components/repositorio';
 import Usuario from '../components/usuario';
 import { IRepo } from '../types/IRepo';
-import { IUser } from '../types/IUser';
-
+import "./App.css";
 
 function App() {
 
@@ -140,15 +139,6 @@ function App() {
 
   const [repos, setRepo] = useState<IRepo[]>([]);
 
-  /* useEffect(() =>{
-    //pegar usuario
-    axios.get("https://api.github.com/users/ylaburi")
-    .then(resposta =>{
-      console.log(resposta)
-      setUser(resposta.data)
-    })
-  }, []) */
-
   const pesquisar = (inputValor: string) => {
     console.log('O valor do input é:', inputValor);
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -156,13 +146,13 @@ function App() {
       //pegar usuario
       axios.get(`http://localhost:8080/api/user/${inputValor}`)
       .then(resposta =>{
-        console.log(resposta)
+        //console.log(resposta)
         setUser(resposta.data)
       })
 
       axios.get(`http://localhost:8080/api/user/${inputValor}/repos`)
       .then(resposta =>{
-        console.log(resposta)
+        //console.log(resposta)
         setRepo(resposta.data)
       })
   }
@@ -171,13 +161,25 @@ function App() {
     <div className="App">
 
       <Cabecalho/>
-      <Buscar onSubmit={pesquisar}/>
-      {/* <Usuario user={user}/> */}
-      {user && <Usuario user={user} />}
-      {repos.map((item, index) => (
-          <Repositorio key={index}
-          repo={item}/>
-        ))}
+      <div className='content'>
+
+        <div className="pesquisa">
+          <Buscar onSubmit={pesquisar}/>
+        </div>
+
+        <div className="card">
+          
+          <div className="user">
+            {user && <Usuario user={user} />}
+          </div>
+
+          <div className="repos">
+            {repos.map((item, index) => (
+              <Repositorio key={index} repo={item}/>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

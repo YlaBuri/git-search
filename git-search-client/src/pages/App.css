@@ -1,0 +1,44 @@
+/* --space-cadet: #2b2d42ff;
+--cool-gray: #8d99aeff;
+--antiflash-white: #edf2f4ff;
+--red-pantone: #ef233cff;
+--fire-engine-red: #d90429ff; */
+
+.pesquisa, .card{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.content{
+    background-color: #edf2f4ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.card{
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    /* width: 1448px;
+    height: 910px; */
+    box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 45px;
+    padding: 20px;
+}
+
+.repos{
+    width: 800px;
+    height: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: auto;
+
+}
+
+
+
+
+
