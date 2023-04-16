@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { AiOutlineSearch } from "react-icons/ai";
+import "./Buscar.css"
 
 export default function Buscar(props: any){
 
@@ -11,11 +13,13 @@ export default function Buscar(props: any){
 
     return(
         <form onSubmit={pesquisar}>
-            <label>
+            <div  className="search">
                 
                 <input type="text" id="pesquisar" onChange={evento => setInputValor(evento.target.value)}></input>
-            </label>
-            <button type="submit">Pesquisar</button>
+                <button  type="submit" className='btn_pesquisar'>
+                <span className='icon'><AiOutlineSearch /></span> 
+                </button>
+            </div>
         </form>
     )
 }
