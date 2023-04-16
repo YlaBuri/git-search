@@ -139,7 +139,7 @@ function App() {
 
   const [repos, setRepo] = useState<IRepo[]>([]);
 
-  useEffect(() =>{
+  /* useEffect(() =>{
     //pegar usuario
     axios.get("https://api.github.com/users/facebook")
     .then(resposta =>{
@@ -153,7 +153,7 @@ function App() {
       setRepo(resposta.data)
     })
   }, [])
-
+ */
   const pesquisar = (inputValor: string) => {
     console.log('O valor do input é:', inputValor);
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -182,6 +182,7 @@ function App() {
           <Buscar onSubmit={pesquisar}/>
         </div>
 
+        {user && 
         <div className="card">
           
           <div className="user">
@@ -193,7 +194,8 @@ function App() {
               <Repositorio key={index} repo={item}/>
             ))}
           </div>
-        </div>
+        </div>}
+
       </div>
     </div>
   );
