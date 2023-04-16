@@ -18,6 +18,7 @@ input{
     outline: 0;
     box-sizing: border-box;
     top: 220px;
+    background-repeat: no-repeat;
     background-position-y: center;
     background-position-x: 4.08%;
     font-family: 'Poppins', sans-serif;
