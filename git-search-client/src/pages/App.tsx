@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Buscar from '../components/buscar';
 import Cabecalho from '../components/cabecalho';
 import Repositorio from '../components/repositorio';
@@ -139,6 +139,21 @@ function App() {
 
   const [repos, setRepo] = useState<IRepo[]>([]);
 
+  useEffect(() =>{
+    //pegar usuario
+    axios.get("https://api.github.com/users/facebook")
+    .then(resposta =>{
+      console.log(resposta)
+      setUser(resposta.data)
+    })
+
+    axios.get("https://api.github.com/users/facebook/repos")
+    .then(resposta =>{
+      console.log(resposta)
+      setRepo(resposta.data)
+    })
+  }, [])
+
   const pesquisar = (inputValor: string) => {
     console.log('O valor do input é:', inputValor);
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -172,7 +187,7 @@ function App() {
           <div className="user">
             {user && <Usuario user={user} />}
           </div>
-
+          <hr className='vertical'></hr>
           <div className="repos">
             {repos.map((item, index) => (
               <Repositorio key={index} repo={item}/>

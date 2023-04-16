@@ -1,7 +1,7 @@
-.user{
-    display: flex;
+.user_content{
     height: 100%;
-    width: 600px;
+    width: 90%;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
@@ -21,15 +21,44 @@
     align-items: center;
 }
 
+
+.user_login, .user_nome{
+    margin: 0px 0px;
+}
+
+.user_nome{
+    font-size: 30px;
+}
+
+.user_login{
+    font-size: 15px;
+}
+
+.bio{
+    width: 90%;
+}
+
 .follow{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     width: 100%;
+    
 }
 
 .infos{
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 90%;
+}
+
+.icon {
+    display: 'inline-block';
+    margin-right: 5px;
+    vertical-align: middle;
+    color: #EF233C;
+}
+
+label{
+    display: inline-block;
 }

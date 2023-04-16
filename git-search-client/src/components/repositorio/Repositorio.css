@@ -5,12 +5,13 @@
     display: flex;
     flex-direction: column; 
     justify-content: space-between;
-    width: 350px;
+    flex-grow: 1;
+    width: 40%;
     border: 1px solid #EF233C;
-    border-radius: 5px;
-    padding: 5px;
-    margin: 5px;
-    max-height: 100px;
+    padding: 10px 5px;
+    border-radius: 10px;
+    margin: 5px 20px;
+    /* max-height: 100px; */
 }
 
 .infos_repo{
@@ -19,6 +20,27 @@
 
 }
 
-.infos_repo *{
-    margin-right: 20px;
+.repo_descr{
+    font-size: 12px;
+    margin: 5px 0;
 }
+
+.repo_name{
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.infos_repo *{
+    font-size: 10px;
+    font-weight: lighter;
+    /* margin-right: 20px; */
+}
+
+.icon {
+    display: 'inline-block';
+    margin-right: 2px;
+    margin-left: 10px;
+    vertical-align: middle;
+    color: #EF233C;
+}
+

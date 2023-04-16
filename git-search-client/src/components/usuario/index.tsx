@@ -1,15 +1,15 @@
 import React from 'react';
 import { IUser } from '../../types/IUser';
 import './Usuario.css';
-
-
+import { AiOutlineLink, AiOutlineMail, AiOutlineTwitter } from "react-icons/ai";
+import { BiCurrentLocation } from "react-icons/bi";
 interface UserInfoProps {
     user: IUser;
 }
 
 export default function Usuario({user}: UserInfoProps){
     return(
-        <div className='user'>
+        <div className='user_content'>
             
             <img src={user.avatar_url} alt={user.name} className='avatar'/>
             
@@ -32,10 +32,30 @@ export default function Usuario({user}: UserInfoProps){
             </div>
 
             <div className="infos">
-                <label>{user.location}</label>
-                <label>{user.email}</label>
-                <label>{user.blog}</label>
-                <label>{user.twitter_username}</label>
+
+                {user.location &&
+                <label>
+                    <span className='icon'><BiCurrentLocation /></span>
+                    {user.location}
+                </label>}
+                
+                {user.email && <label>
+                    <span className='icon'><AiOutlineMail /></span> 
+                    {user.email}
+                </label>
+                }
+                
+                {user.blog &&
+                <label>
+                    <span className='icon'><AiOutlineLink /></span>
+                    {user.blog}
+                </label>}
+                
+                {user.twitter_username &&
+                <label>
+                    <span className='icon'><AiOutlineTwitter /></span>
+                    {user.twitter_username}
+                </label>}
             </div>
 
         </div>
